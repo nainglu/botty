@@ -1,19 +1,15 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: blog_development
+  database: myapp_development
   pool: 5
-  username: blog
-  password: 
-  host: localhost
-  port: 5432
+  username: myapp
+  password: password1
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: blog_development
+  database: myapp_test
   pool: 5
-  username: blog
-  password: 
-  host: localhost
-  port: 5432
+  username: myapp
+  password: password1
