@@ -32,7 +32,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
         end
-        
+
       end
     end
     render :nothing => true, :status => 200, :content_type => 'text/html'
@@ -113,20 +113,20 @@ class BotController < ApplicationController
 
     def web_pack_quick_reply
       mes = {
-              "text":"Choose a topic.",
-              "quick_replies":[
-                {
-                  "content_type":"text",
-                  "title":"Website Package Comparison",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                },
-                {
-                  "content_type":"text",
-                  "title":"Support Options",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                }
-              ]
-            }
+            "text":"Choose type",
+            "quick_replies":[
+              {
+                "content_type":"text",
+                "title":"Website Package Comparison",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+              },
+              {
+                "content_type":"text",
+                "title":"Support Options",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+              }
+            ]
+          }
     end
 
 end
