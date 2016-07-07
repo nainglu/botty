@@ -9,8 +9,11 @@ class BotController < ApplicationController
     unless params["entry"].nil? || params["entry"].empty?
       unless params["entry"][0]["messaging"][0]["message"].nil?
         sender = params["entry"][0]["messaging"][0]["sender"]["id"]
+        text = params["entry"][0]["messaging"][0]["message"]["text"]
 
-        FacebookBot.new.send_text_message(sender, "Hello")
+        respond = I18n.t(text)
+
+        FacebookBot.new.send_text_message(sender, respond)
       end
     end
     render :nothing => true, :status => 200, :content_type => 'text/html'
