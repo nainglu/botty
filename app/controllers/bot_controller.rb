@@ -58,7 +58,7 @@ class BotController < ApplicationController
                   {
                     "type":"postback",
                     "title":"Start Chatting",
-                    "payload":"USER_DEFINED_PAYLOAD"
+                    "payload":"say hi"
                   }
                 ]
               }
