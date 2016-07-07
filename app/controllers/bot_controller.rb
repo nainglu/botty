@@ -1,5 +1,7 @@
 class BotController < ApplicationController
 
+  protect_from_forgery with: :null_session
+
   def webhook
     if params['hub.verify_token'] == 'my_voice_is_my_password_verify_me'
       render json: params['hub.challenge']
