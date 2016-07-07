@@ -15,7 +15,6 @@ class BotController < ApplicationController
       else
         respond = "Hi thanks for messaging"
       end
-      res = FacebookBot.new.send_text_message(sender, respond)
     end
 
   end
