@@ -18,7 +18,24 @@ class BotController < ApplicationController
         elsif text == "Website Package"
           res = "Excellent! let's go deeper. what would you like to find out?"
           FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+
+          mes = {
+            "text":"Choose type",
+            "quick_replies":[
+              {
+                "content_type":"text",
+                "title":"Website Package Comparison",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+              },
+              {
+                "content_type":"text",
+                "title":"Support Options",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+              }
+            ]
+          }
+
+          FacebookBot.new.send_generic_message(sender, mes)
         elsif text == "Website Package Comparison"
           res = "Here you go!"
           mes = {
@@ -112,21 +129,7 @@ class BotController < ApplicationController
     end
 
     def web_pack_quick_reply
-      mes = {
-            "text":"Choose type",
-            "quick_replies":[
-              {
-                "content_type":"text",
-                "title":"Website Package Comparison",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-              },
-              {
-                "content_type":"text",
-                "title":"Support Options",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-              }
-            ]
-          }
+      
     end
 
 end
