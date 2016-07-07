@@ -7,7 +7,7 @@ class BotController < ApplicationController
       render json: params["hub.challenge"]
     end
     unless params["entry"].nil? || params["entry"].empty?
-      if params["entry"][0]["messaging"][0]["message"]["text"]
+      if !params["entry"][0]["messaging"][0].nil?
         sender = params["entry"][0]["messaging"][0]["sender"]["id"]
 
         FacebookBot.new.send_text_message(sender, "Hello")
