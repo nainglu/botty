@@ -99,10 +99,7 @@ class BotController < ApplicationController
                 {
                   "content_type":"text",
                   "title":"Red",
-                  "payload": {
-                    "content_type": "text",
-                    "text": "you chose red"
-                  }
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                 },
                 {
                   "content_type":"text",
