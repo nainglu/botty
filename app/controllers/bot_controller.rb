@@ -14,7 +14,8 @@ class BotController < ApplicationController
         respond = I18n.t(text)
 
         if respond == "generic"
-          mes = {"attachment":{
+          mes = {
+                  "attachment":{
                     "type":"template",
                     "payload":{
                       "template_type":"generic",
@@ -40,6 +41,29 @@ class BotController < ApplicationController
                     }
                   }
                 }
+          FacebookBot.new.send_generic_message(sender, mes)
+        elsif respond == "bubble"
+          mes = {
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"button",
+                "text":"What do you want to do next?",
+                "buttons":[
+                  {
+                    "type":"web_url",
+                    "url":"https://petersapparel.parseapp.com",
+                    "title":"Show Website"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Start Chatting",
+                    "payload":"USER_DEFINED_PAYLOAD"
+                  }
+                ]
+              }
+            }
+          }
           FacebookBot.new.send_generic_message(sender, mes)
         else
           FacebookBot.new.send_text_message(sender, respond)
