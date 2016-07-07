@@ -65,6 +65,33 @@ class BotController < ApplicationController
             }
           }
           FacebookBot.new.send_generic_message(sender, mes)
+        elsif respond == "video"
+          mes = {
+            "attachment":{
+              "type":"video",
+              "payload":{
+                "url":"https://petersapparel.com/bin/clip.mp4"
+              }
+            }
+          }
+          FacebookBot.new.send_generic_message(sender, mes)
+        elsif respond == "quick"
+          mes = {
+                  "text":"Pick a color:",
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":"Red",
+                      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Green",
+                      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                    }
+                  ]
+                }
+          FacebookBot.new.send_generic_message(sender, mes)
         else
           FacebookBot.new.send_text_message(sender, respond)
         end
