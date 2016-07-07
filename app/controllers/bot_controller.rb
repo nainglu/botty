@@ -14,36 +14,62 @@ class BotController < ApplicationController
         respond = I18n.t(text)
 
         if respond == "generic"
+          FacebookBot.new.send_generic_message(sender, generic_template)
+        elsif respond == "bubble"
+          FacebookBot.new.send_generic_message(sender, bubble_template)
+        elsif respond == "video"
           mes = {
-                  "attachment":{
-                    "type":"template",
-                    "payload":{
-                      "template_type":"generic",
-                      "elements":[
+            "attachment":{
+              "type":"video",
+              "payload":{
+                "url":"https://petersapparel.com/bin/clip.mp4"
+              }
+            }
+          }
+          FacebookBot.new.send_generic_message(sender, mes)
+        elsif respond == "quick"
+          FacebookBot.new.send_generic_message(sender, quick_reply)
+        else
+          FacebookBot.new.send_text_message(sender, respond)
+        end
+      end
+    end
+    render :nothing => true, :status => 200, :content_type => 'text/html'
+  end
+
+  private
+    def generic_template
+      mes = {
+              "attachment":{
+                "type":"template",
+                "payload":{
+                  "template_type":"generic",
+                  "elements":[
+                    {
+                      "title":"Welcome to Peter\'s Hats",
+                      "image_url":"http://petersapparel.parseapp.com/img/item100-thumb.png",
+                      "subtitle":"We\'ve got the right hat for everyone.",
+                      "buttons":[
                         {
-                          "title":"Welcome to Peter\'s Hats",
-                          "image_url":"http://petersapparel.parseapp.com/img/item100-thumb.png",
-                          "subtitle":"We\'ve got the right hat for everyone.",
-                          "buttons":[
-                            {
-                              "type":"web_url",
-                              "url":"https://petersapparel.parseapp.com/view_item?item_id=100",
-                              "title":"View Website"
-                            },
-                            {
-                              "type":"postback",
-                              "title":"Start Chatting",
-                              "payload":"USER_DEFINED_PAYLOAD"
-                            }              
-                          ]
-                        }
+                          "type":"web_url",
+                          "url":"https://petersapparel.parseapp.com/view_item?item_id=100",
+                          "title":"View Website"
+                        },
+                        {
+                          "type":"postback",
+                          "title":"Start Chatting",
+                          "payload":"USER_DEFINED_PAYLOAD"
+                        }              
                       ]
                     }
-                  }
+                  ]
                 }
-          FacebookBot.new.send_generic_message(sender, mes)
-        elsif respond == "bubble"
-          mes = {
+              }
+            }
+    end
+
+    def bubble_template
+      mes = {
             "attachment":{
               "type":"template",
               "payload":{
@@ -64,41 +90,25 @@ class BotController < ApplicationController
               }
             }
           }
-          FacebookBot.new.send_generic_message(sender, mes)
-        elsif respond == "video"
-          mes = {
-            "attachment":{
-              "type":"video",
-              "payload":{
-                "url":"https://petersapparel.com/bin/clip.mp4"
-              }
-            }
-          }
-          FacebookBot.new.send_generic_message(sender, mes)
-        elsif respond == "quick"
-          mes = {
-                  "text":"Pick a color:",
-                  "quick_replies":[
-                    {
-                      "content_type":"text",
-                      "title":"Red",
-                      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Green",
-                      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                    }
-                  ]
-                }
-          FacebookBot.new.send_generic_message(sender, mes)
-        else
-          FacebookBot.new.send_text_message(sender, respond)
-        end
-      end
     end
-    render :nothing => true, :status => 200, :content_type => 'text/html'
-  end
+
+    def quick_reply
+      mes = {
+              "text":"Pick a color:",
+              "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"Red",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Green",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                }
+              ]
+            }
+    end
 
 end
 
