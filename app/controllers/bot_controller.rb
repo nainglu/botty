@@ -11,27 +11,28 @@ class BotController < ApplicationController
         sender = params["entry"][0]["messaging"][0]["sender"]["id"]
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
-        respond = I18n.t(text)
-
-        if respond == "generic"
-          FacebookBot.new.send_generic_message(sender, generic_template)
-        elsif respond == "bubble"
-          FacebookBot.new.send_generic_message(sender, bubble_template)
-        elsif respond == "video"
+        if text == "Hi" || text == "hi"
+          res = "Hi! I'm Botty. what would you like to ask me about?"
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, topic_quick_reply)
+        elsif text == "Website Package"
+          res = "Excellent! let's go deeper. what would you like to find out?"
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+        elsif text == "Website Package Comparison"
+          res = "Here you go!"
           mes = {
             "attachment":{
-              "type":"video",
+              "type":"image",
               "payload":{
-                "url":"https://petersapparel.com/bin/clip.mp4"
+                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
               }
             }
           }
+          FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-        elsif respond == "quick"
-          FacebookBot.new.send_generic_message(sender, quick_reply)
-        else
-          FacebookBot.new.send_text_message(sender, respond)
         end
+        
       end
     end
     render :nothing => true, :status => 200, :content_type => 'text/html'
@@ -92,18 +93,36 @@ class BotController < ApplicationController
           }
     end
 
-    def quick_reply
+    def topic_quick_reply
       mes = {
-              "text":"Pick a color:",
+              "text":"Choose a topic.",
               "quick_replies":[
                 {
                   "content_type":"text",
-                  "title":"Red",
+                  "title":"Website Package",
                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                 },
                 {
                   "content_type":"text",
-                  "title":"Green",
+                  "title":"Random Chat",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                }
+              ]
+            }
+    end
+
+    def web_pack_quick_reply
+      mes = {
+              "text":"Choose a topic.",
+              "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"Website Package Comparison",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Support Options",
                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                 }
               ]
