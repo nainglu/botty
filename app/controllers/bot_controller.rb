@@ -5,6 +5,8 @@ class BotController < ApplicationController
   def webhook
     
     FacebookBot.new.send_text_message(sender, "Hello")
+
+    render :nothing, status: 200
   end
 
 end
