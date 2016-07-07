@@ -8,7 +8,7 @@ class BotController < ApplicationController
     
     FacebookBot.new.send_text_message(sender, "Hello")
 
-    render :nothing, status: 200
+    render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 
 end
