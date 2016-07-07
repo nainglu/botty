@@ -1,27 +1,22 @@
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: myapp_development
-  pool: 5
-  username: 
+  adapter: mysql2
+  encoding: utf8
+  database: boty_dev
+  username: root
   password: 
   host: localhost
-  port: 5432
 
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: myapp_test
-  pool: 5
-  username: 
+  adapter: mysql2
+  encoding: utf8
+  database: boty_test
+  username: root
   password: 
   host: localhost
-  port: 5432
 
 production:
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
   database: boty_prod
-  pool: 5
   username: root
-  password: root
+  password: 
