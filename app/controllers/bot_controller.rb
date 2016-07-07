@@ -104,7 +104,9 @@ class BotController < ApplicationController
                 {
                   "content_type":"text",
                   "title":"Green",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                  "payload": {
+                    "text": "You chose greend"
+                  }
                 }
               ]
             }
