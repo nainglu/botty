@@ -17,9 +17,7 @@ class BotController < ApplicationController
           choose_lang_quick.merge!(text: res)         
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, choose_lang_quick)
-        end
-
-        if text == "Myanmar" || text == "English"
+        elsif text == "Myanmar" || text == "English"
           if text == "Myanmar"
             res = "ဟုတ္ကဲ့ ။ လူႀကီးမင္းအေနနဲ႔ ဘယ္အေၾကာင္းအရာျဖင့္ ပတ္သက္ပီး သိလုိပါသလဲ။"
             topic_bubble[:attachment][:payload].merge!(text: res)
