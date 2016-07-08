@@ -16,22 +16,8 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, topic_quick_reply)
         elsif text == "Website Package"
-          
-          mes = {
-              "text":"Choose a topic.",
-              "quick_replies":[
-                {
-                  "content_type":"text",
-                  "title":"Package Comparison",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                },
-                {
-                  "content_type":"text",
-                  "title":"Support Options",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                }
-              ]
-            }
+          res = "Okay! one more thing, what do you want to know?"
+          FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
         elsif text == "Package Comparison"
           res = "Here you go!"
@@ -44,7 +30,10 @@ class BotController < ApplicationController
             }
           }
           FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, mes)
+          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+        elsif text == "bubble"
+
+          FacebookBot.new.send_generic_message(sender, bubble_template)
         end
 
       end
@@ -126,7 +115,21 @@ class BotController < ApplicationController
     end
 
     def web_pack_quick_reply
-      
+      mes = {
+              "text":"Choose a topic.",
+              "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"Package Comparison",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Support Options",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                }
+              ]
+            }
     end
 
 end
