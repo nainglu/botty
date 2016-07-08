@@ -16,11 +16,9 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, topic_quick_reply)
         elsif text == "Website Package"
-          res = "Excellent! let's go deeper. what would you like to find out?"
-          FacebookBot.new.send_text_message(sender, res)
-
           mes = {
-            "text":"Choose type",
+            "text":"Excellent! let's go deeper. what would you like to find out? 
+                    Choose type",
             "quick_replies":[
               {
                 "content_type":"text",
