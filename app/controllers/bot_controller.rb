@@ -15,40 +15,41 @@ class BotController < ApplicationController
           res = "Hello! Nice to meet you. 
                   What language do you want to use for further conversation."
           choose_lang_quick.merge!(text: res)         
+          FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, choose_lang_quick)
-
-          if text == "Myanmar" || text == "English"
-            if text == "Myanmar"
-              res = "ဟုတ္ကဲ့ ။ လူႀကီးမင္းအေနနဲ႔ ဘယ္အေၾကာင္းအရာျဖင့္ ပတ္သက္ပီး သိလုိပါသလဲ။"
-              topic_bubble[:attachment][:payload].merge!(text: res)
-            else
-              res = "Excellent! please specify your question."
-              topic_bubble[:attachment][:payload].merge!(text: res)
-            end
-            FacebookBot.new.send_generic_message(sender, topic_bubble)
-          elsif text == "Website Design"
-            res = "Okay! one more thing, what do you want to know?"
-            FacebookBot.new.send_text_message(sender, res)
-            FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
-          elsif text == "Website Hosting"
-            res = "Here you go!"
-            mes = {
-              "attachment":{
-                "type":"image",
-                "payload":{
-                  "url":"http://www.gstatic.com/webp/gallery/2.jpg"
-                }
-              }
-            }
-            FacebookBot.new.send_text_message(sender, res)
-            FacebookBot.new.send_generic_message(sender, mes)
-          elsif text == "Email & Domain Registration"
-
-            FacebookBot.new.send_generic_message(sender, bubble_template)
-          end
         else
           res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
           FacebookBot.new.send_text_message(sender, res)
+        end
+
+        if text == "Myanmar" || text == "English"
+          if text == "Myanmar"
+            res = "ဟုတ္ကဲ့ ။ လူႀကီးမင္းအေနနဲ႔ ဘယ္အေၾကာင္းအရာျဖင့္ ပတ္သက္ပီး သိလုိပါသလဲ။"
+            topic_bubble[:attachment][:payload].merge!(text: res)
+          else
+            res = "Excellent! please specify your question."
+            topic_bubble[:attachment][:payload].merge!(text: res)
+          end
+          FacebookBot.new.send_generic_message(sender, topic_bubble)
+        elsif text == "Website Design"
+          res = "Okay! one more thing, what do you want to know?"
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+        elsif text == "Website Hosting"
+          res = "Here you go!"
+          mes = {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+              }
+            }
+          }
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, mes)
+        elsif text == "Email & Domain Registration"
+
+          FacebookBot.new.send_generic_message(sender, bubble_template)
         end
 
       end
