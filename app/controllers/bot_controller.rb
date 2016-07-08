@@ -11,7 +11,7 @@ class BotController < ApplicationController
         sender = params["entry"][0]["messaging"][0]["sender"]["id"]
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
-        if greeing.inclulde? text
+        if greeting.inclulde? text
           res = "မဂၤလာပါ"
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, topic_quick_reply)
