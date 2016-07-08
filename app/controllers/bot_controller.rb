@@ -17,9 +17,6 @@ class BotController < ApplicationController
           choose_lang_quick.merge!(text: res)         
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, choose_lang_quick)
-        else
-          res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
-          FacebookBot.new.send_text_message(sender, res)
         end
 
         if text == "Myanmar" || text == "English"
@@ -48,8 +45,10 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
         elsif text == "Email & Domain Registration"
-
           FacebookBot.new.send_generic_message(sender, bubble_template)
+        else
+          res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
+          FacebookBot.new.send_text_message(sender, res)
         end
 
       end
