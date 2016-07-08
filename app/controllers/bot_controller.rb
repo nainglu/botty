@@ -30,7 +30,7 @@ class BotController < ApplicationController
             }
           }
           FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+          FacebookBot.new.send_generic_message(sender, mes)
         elsif text == "bubble"
 
           FacebookBot.new.send_generic_message(sender, bubble_template)
