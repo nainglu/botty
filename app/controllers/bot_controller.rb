@@ -33,7 +33,7 @@ class BotController < ApplicationController
               ]
             }
           FacebookBot.new.send_generic_message(sender, mes)
-        elsif text == "Website Package Comparison"
+        elsif text == "Package Comparison"
           res = "Here you go!"
           mes = {
             "attachment":{
