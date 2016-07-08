@@ -109,6 +109,11 @@ class BotController < ApplicationController
                   "content_type":"text",
                   "title":"Random Chat",
                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Random Chat",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                 }
               ]
             }
