@@ -18,21 +18,20 @@ class BotController < ApplicationController
         elsif text == "Website Package"
           
           mes = {
-            "text":"Choose type",
-            "quick_replies":[
-              {
-                "content_type":"text",
-                "title":"Website Package Comparison",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-              },
-              {
-                "content_type":"text",
-                "title":"Support Options",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-              }
-            ]
-          }
-
+              "text":"Choose a topic.",
+              "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"Website Package",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Random Chat",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                }
+              ]
+            }
           FacebookBot.new.send_generic_message(sender, mes)
         elsif text == "Website Package Comparison"
           res = "Here you go!"
