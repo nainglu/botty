@@ -19,7 +19,7 @@ class BotController < ApplicationController
 
           if text == "Myanmar" || text == "English"
             if text == "Myanmar"
-              res = "ဟုတ္ကဲ့။ လူႀကီးမင္းအေနနဲ႔ ဘယ္အေၾကာင္းအရာျဖင့္ ပတ္သက္ပီး သိလုိပါသလဲ။"
+              res = "ဟုတ္ကဲ့ ။ လူႀကီးမင္းအေနနဲ႔ ဘယ္အေၾကာင္းအရာျဖင့္ ပတ္သက္ပီး သိလုိပါသလဲ။"
               topic_bubble[:attachment][:payload].merge!(text: res)
             else
               res = "Excellent! please specify your question."
