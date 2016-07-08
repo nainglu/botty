@@ -12,7 +12,7 @@ class BotController < ApplicationController
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
         if text == "Hi" || text == "hi"
-          res = "Hi! I'm Botty. what would you like to ask me about?"
+          res = "မဂၤလာပါ"
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, topic_quick_reply)
         elsif text == "Website Package"
