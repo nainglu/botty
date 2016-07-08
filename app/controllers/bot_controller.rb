@@ -11,7 +11,7 @@ class BotController < ApplicationController
         sender = params["entry"][0]["messaging"][0]["sender"]["id"]
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
-        if text == "Hi" || text == "hi"
+        if greeing.inclulde? text
           res = "မဂၤလာပါ"
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, topic_quick_reply)
@@ -42,6 +42,12 @@ class BotController < ApplicationController
   end
 
   private
+    def greeting
+      ["မဂၤလာပါ", "ဟုိင္း", "Hi", "hi", "Hello", "hello", 
+        "HELLO", "HI"]
+    end
+
+
     def generic_template
       mes = {
               "attachment":{
