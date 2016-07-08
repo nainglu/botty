@@ -18,7 +18,7 @@ class BotController < ApplicationController
         elsif text == "Website Package"
           res = "Okay! one more thing, what do you want to know?"
           FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, mes)
+          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
         elsif text == "Package Comparison"
           res = "Here you go!"
           mes = {
