@@ -12,29 +12,40 @@ class BotController < ApplicationController
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
         if greeting.include? text
-          res = "မဂၤလာပါ"
-          FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, topic_quick_reply)
-        elsif text == "Website Package"
-          res = "Okay! one more thing, what do you want to know?"
-          FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
-        elsif text == "Package Comparison"
-          res = "Here you go!"
-          mes = {
-            "attachment":{
-              "type":"image",
-              "payload":{
-                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+          res = "Hello! Nice to meet you. 
+                  What language do you want to use for further conversation."
+          choose_lang_quick.merge!(text: res)         
+          FacebookBot.new.send_generic_message(sender, choose_lang_quick)
+
+          if text == "Myanmar" || text == "English"
+            if text == "Myanmar"
+              res = "ဟုတ္ကဲ့။ လူႀကီးမင္းအေနနဲ႔ ဘယ္အေၾကာင္းအရာျဖင့္ ပတ္သက္ပီး သိလုိပါသလဲ။"
+              topic_bubble[:attachment][:payload].merge!(text: res)
+            else
+              res = "Excellent! please specify your question."
+              topic_bubble[:attachment][:payload].merge!(text: res)
+            end
+            FacebookBot.new.send_generic_message(sender, topic_bubble)
+          elsif text == "Website Design"
+            res = "Okay! one more thing, what do you want to know?"
+            FacebookBot.new.send_text_message(sender, res)
+            FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+          elsif text == "Website Hosting"
+            res = "Here you go!"
+            mes = {
+              "attachment":{
+                "type":"image",
+                "payload":{
+                  "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+                }
               }
             }
-          }
-          FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, mes)
-        elsif text == "bubble"
+            FacebookBot.new.send_text_message(sender, res)
+            FacebookBot.new.send_generic_message(sender, mes)
+          elsif text == "Email & Domain Registration"
 
-          FacebookBot.new.send_generic_message(sender, bubble_template)
-        end
+            FacebookBot.new.send_generic_message(sender, bubble_template)
+          end
 
       end
     end
@@ -78,7 +89,36 @@ class BotController < ApplicationController
             }
     end
 
-    def bubble_template
+    def topic_bubble
+      mes = {
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"button",
+                "text":"What do you want to do next?",
+                "buttons":[
+                  {
+                    "type":"postback",
+                    "title":"Website Design",
+                    "payload":"defined_payload"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Website Hosting",
+                    "payload":"defined_payload"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Email & Domain Registration",
+                    "payload":"defined_payload"
+                  }
+                ]
+              }
+            }
+          }
+    end
+
+    def topic_quick_reply
       mes = {
             "attachment":{
               "type":"template",
@@ -102,29 +142,6 @@ class BotController < ApplicationController
           }
     end
 
-    def topic_quick_reply
-      mes = {
-              "text":"Choose a topic.",
-              "quick_replies":[
-                {
-                  "content_type":"text",
-                  "title":"Website Package",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                },
-                {
-                  "content_type":"text",
-                  "title":"Random Chat",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                },
-                {
-                  "content_type":"text",
-                  "title":"Random Chat",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                }
-              ]
-            }
-    end
-
     def web_pack_quick_reply
       mes = {
               "text":"Choose a topic.",
@@ -141,6 +158,24 @@ class BotController < ApplicationController
                 }
               ]
             }
+    end
+
+    def choose_lang_quick
+      mes = {
+            "text":"Choose a topic.",
+            "quick_replies":[
+              {
+                "content_type":"text",
+                "title":"Myanmar",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+              },
+              {
+                "content_type":"text",
+                "title":"English",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+              }
+            ]
+          }
     end
 
 end
