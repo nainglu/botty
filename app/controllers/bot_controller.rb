@@ -22,12 +22,12 @@ class BotController < ApplicationController
               "quick_replies":[
                 {
                   "content_type":"text",
-                  "title":"Website Package",
+                  "title":"Website Package Comparison",
                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                 },
                 {
                   "content_type":"text",
-                  "title":"Random Chat",
+                  "title":"Monthly Support Options",
                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                 }
               ]
