@@ -10,7 +10,10 @@ class BotController < ApplicationController
       unless params["entry"][0]["messaging"][0]["message"].nil?
         sender = params["entry"][0]["messaging"][0]["sender"]["id"]
         text = params["entry"][0]["messaging"][0]["message"]["text"]
-
+        if !params["entry"][0]["messaging"][0]["postback"].nil?
+          payload = params["entry"][0]["messaging"][0]["postback"]["payload"]
+          FacebookBot.new.send_text_message(sender, payload)
+        end
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, topic_bubble)
         else
