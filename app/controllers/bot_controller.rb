@@ -12,25 +12,13 @@ class BotController < ApplicationController
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
         if greeting.include? text
-          
-          res = "Hello! Nice to meet you. 
-                  What language do you want to use for further conversation."
-          choose_lang_quick.merge!(text: res)         
-          FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, choose_lang_quick)
-        elsif text == "Myanmar" || text == "English"
-          if text == "Myanmar"
-            res = "ဟုတ္ကဲ့ ။ လူႀကီးမင္းအေနနဲ႔ ဘယ္အေၾကာင္းအရာျဖင့္ ပတ္သက္ပီး သိလုိပါသလဲ။"
-            topic_bubble[:attachment][:payload].merge!(text: res)
-          else
-            res = "Excellent! please specify your question."
-            topic_bubble[:attachment][:payload].merge!(text: res)
-          end
+
+          res = "မဂၤလာပါခင္ဗ်ာ။ ယခုလုိဆက္သြယ္ျခင္းအတြက္ ေက်းဇူးတင္ရွိပါတယ္။ မည္သည့္အေၾကာင္းအရာအတြက္ သိရွိလုိပါသလဲ။"
+          topic_bubble[:attachment][:payload].merge!(text: res)
           FacebookBot.new.send_generic_message(sender, topic_bubble)
         elsif text == "Website Design"
-          res = "Okay! one more thing, what do you want to know?"
+          res = "ဟုတ္ကဲ့ခင္ဗ်ာ။ က်ြန္ေတာ္တုိ႔ဆီမွာ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။"
           FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
         elsif text == "Website Hosting"
           res = "Here you go!"
           mes = {
