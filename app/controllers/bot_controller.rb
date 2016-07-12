@@ -10,33 +10,37 @@ class BotController < ApplicationController
       unless params["entry"][0]["messaging"][0]["message"].nil?
         sender = params["entry"][0]["messaging"][0]["sender"]["id"]
         text = params["entry"][0]["messaging"][0]["message"]["text"]
-        payload = params["entry"][0]["messaging"][0]["postback"]["payload"]
 
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, topic_bubble)
-        elsif payload == "Website Design"
-          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
-        elsif payload == "Basic"
-          FacebookBot.new.send_generic_message(sender, generic_template)
-        elsif payload == "Website Hosting"
-          res = "Here you go!"
-          mes = {
-            "attachment":{
-              "type":"image",
-              "payload":{
-                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
-              }
-            }
-          }
-          FacebookBot.new.send_text_message(sender, res)
-          FacebookBot.new.send_generic_message(sender, mes)
-        elsif payload == "Email & Domain Registration"
-          FacebookBot.new.send_generic_message(sender, bubble_template)
         else
           res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
           FacebookBot.new.send_text_message(sender, res)
         end
 
+      else
+        unless params["entry"][0]["messaging"][0]["postback"].nil?
+          payload = params["entry"][0]["messaging"][0]["postback"]["payload"]
+          if payload == "Website Design"
+            FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+          elsif payload == "Basic"
+            FacebookBot.new.send_generic_message(sender, generic_template)
+          elsif payload == "Website Hosting"
+            res = "Here you go!"
+            mes = {
+              "attachment":{
+                "type":"image",
+                "payload":{
+                  "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+                }
+              }
+            }
+            FacebookBot.new.send_text_message(sender, res)
+            FacebookBot.new.send_generic_message(sender, mes)
+          elsif payload == "Email & Domain Registration"
+            FacebookBot.new.send_generic_message(sender, bubble_template)
+          end
+        end
       end
     end
     render :nothing => true, :status => 200, :content_type => 'text/html'
