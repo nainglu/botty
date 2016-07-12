@@ -14,8 +14,7 @@ class BotController < ApplicationController
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, topic_bubble)
         elsif text == "Website Design"
-          res = "ဟုတ္ကဲ့ခင္ဗ်ာ။ က်ြန္ေတာ္တုိ႔ဆီမွာ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။"
-          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
         elsif text == "Website Hosting"
           res = "Here you go!"
           mes = {
@@ -132,16 +131,21 @@ class BotController < ApplicationController
 
     def web_pack_quick_reply
       mes = {
-              "text":"Choose a topic.",
+              "text":"ဟုတ္ကဲ့ခင္ဗ်ာ။ က်ြန္ေတာ္တုိ႔ဆီမွာ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
               "quick_replies":[
                 {
                   "content_type":"text",
-                  "title":"Package Comparison",
+                  "title":"Basic",
                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                 },
                 {
                   "content_type":"text",
-                  "title":"Support Options",
+                  "title":"Standard",
+                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Premium",
                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                 }
               ]
