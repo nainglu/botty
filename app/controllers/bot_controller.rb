@@ -9,12 +9,16 @@ class BotController < ApplicationController
     unless params["entry"].nil? || params["entry"].empty?
       
       sender = params["entry"][0]["messaging"][0]["sender"]["id"]
-      text = "aaa"
+      
       unless params["entry"][0]["messaging"][0]["message"].nil?
         text = params["entry"][0]["messaging"][0]["message"]["text"]
+      else
+        text = "aaa"
       end
       unless params["entry"][0]["messaging"][0]["postback"].nil?
         text = params["entry"][0]["messaging"][0]["postback"]["payload"]
+      else
+        text = "aaa"
       end
 
       unless text == "aaa"
