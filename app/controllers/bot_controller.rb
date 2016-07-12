@@ -12,6 +12,7 @@ class BotController < ApplicationController
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
         if greeting.include? text
+          
           res = "Hello! Nice to meet you. 
                   What language do you want to use for further conversation."
           choose_lang_quick.merge!(text: res)         
