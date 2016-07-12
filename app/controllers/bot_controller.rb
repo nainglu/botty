@@ -12,9 +12,10 @@ class BotController < ApplicationController
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
         if greeting.include? text
-          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
-        elsif text == "Website Design"
           FacebookBot.new.send_generic_message(sender, topic_bubble)
+        elsif text == "Website Design"
+          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+        elsif text == "Basic"
         elsif text == "Website Hosting"
           res = "Here you go!"
           mes = {
@@ -157,24 +158,5 @@ class BotController < ApplicationController
             }
           }
     end
-
-    def choose_lang_quick
-      mes = {
-            "text":"Choose a topic.",
-            "quick_replies":[
-              {
-                "content_type":"text",
-                "title":"Myanmar",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-              },
-              {
-                "content_type":"text",
-                "title":"English",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-              }
-            ]
-          }
-    end
-
 end
 
