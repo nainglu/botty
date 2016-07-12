@@ -13,11 +13,11 @@ class BotController < ApplicationController
 
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, topic_bubble)
-        elsif text == "Website Design"
+        elsif text === "Website Design"
           FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
-        elsif text == "Basic"
+        elsif text === "Basic"
           FacebookBot.new.send_generic_message(sender, send_generic_message)
-        elsif text == "Website Hosting"
+        elsif text === "Website Hosting"
           res = "Here you go!"
           mes = {
             "attachment":{
