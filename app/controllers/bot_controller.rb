@@ -10,14 +10,15 @@ class BotController < ApplicationController
       unless params["entry"][0]["messaging"][0]["message"].nil?
         sender = params["entry"][0]["messaging"][0]["sender"]["id"]
         text = params["entry"][0]["messaging"][0]["message"]["text"]
+        payload = params["entry"][0]["messaging"][0]["postback"]["payload"]
 
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, topic_bubble)
-        elsif text == "Website Design"
+        elsif payload == "Website Design"
           FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
-        elsif text == "Basic"
+        elsif payload == "Basic"
           FacebookBot.new.send_generic_message(sender, generic_template)
-        elsif text == "Website Hosting"
+        elsif payload == "Website Hosting"
           res = "Here you go!"
           mes = {
             "attachment":{
@@ -29,7 +30,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-        elsif text == "Email & Domain Registration"
+        elsif payload == "Email & Domain Registration"
           FacebookBot.new.send_generic_message(sender, bubble_template)
         else
           res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
@@ -89,17 +90,17 @@ class BotController < ApplicationController
                   {
                     "type":"postback",
                     "title":"Website Design",
-                    "payload":"USER_DEFINED_PAYLOAD"
+                    "payload":"Website Design"
                   },
                   {
                     "type":"postback",
                     "title":"Website Hosting",
-                    "payload":"USER_DEFINED_PAYLOAD"
+                    "payload":"Website Hosting"
                   },
                   {
                     "type":"postback",
                     "title":"Email & Domain Registration",
-                    "payload":"USER_DEFINED_PAYLOAD"
+                    "payload":"Email & Domain Registration"
                   }
                 ]
               }
