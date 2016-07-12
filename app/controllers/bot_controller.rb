@@ -12,9 +12,6 @@ class BotController < ApplicationController
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
         if greeting.include? text
-
-          res = "မဂၤလာပါခင္ဗ်ာ။ ယခုလုိဆက္သြယ္ျခင္းအတြက္ ေက်းဇူးတင္ရွိပါတယ္။ မည္သည့္အေၾကာင္းအရာအတြက္ သိရွိလုိပါသလဲ။"
-          topic_bubble[:attachment][:payload].merge!(text: res)
           FacebookBot.new.send_generic_message(sender, topic_bubble)
         elsif text == "Website Design"
           res = "ဟုတ္ကဲ့ခင္ဗ်ာ။ က်ြန္ေတာ္တုိ႔ဆီမွာ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။"
@@ -115,7 +112,7 @@ class BotController < ApplicationController
               "type":"template",
               "payload":{
                 "template_type":"button",
-                "text":"What do you want to do next?",
+                "text":"မဂၤလာပါခင္ဗ်ာ။ ယခုလုိဆက္သြယ္ျခင္းအတြက္ ေက်းဇူးတင္ရွိပါတယ္။ မည္သည့္အေၾကာင္းအရာအတြက္ သိရွိလုိပါသလဲ။",
                 "buttons":[
                   {
                     "type":"web_url",
