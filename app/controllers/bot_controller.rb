@@ -30,7 +30,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
         elsif text == "Email & Domain Registration"
-          FacebookBot.new.send_generic_message(sender, bubble_template)
+          FacebookBot.new.send_generic_message(sender, topic_bubble)
         else
           res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
           FacebookBot.new.send_text_message(sender, res)
