@@ -145,17 +145,17 @@ class BotController < ApplicationController
                   {
                     "type":"postback",
                     "title":"Basic",
-                    "payload":"defined_payload"
+                    "payload":"Basic"
                   },
                   {
                     "type":"postback",
                     "title":"Standard",
-                    "payload":"defined_payload"
+                    "payload":"Standard"
                   },
                   {
                     "type":"postback",
                     "title":"Premium",
-                    "payload":"defined_payload"
+                    "payload":"Premium"
                   }
                 ]
               }
