@@ -10,9 +10,9 @@ class BotController < ApplicationController
       
       sender = params["entry"][0]["messaging"][0]["sender"]["id"]
       
-      unless params["entry"][0]["messaging"][0]["message"].nil?
+      if !params["entry"][0]["messaging"][0]["message"].nil?
         text = params["entry"][0]["messaging"][0]["message"]["text"]
-      else 
+      elsif !params["entry"][0]["messaging"][0]["postback"].nil?
         text = params["entry"][0]["messaging"][0]["postback"]["payload"]
       end
 
