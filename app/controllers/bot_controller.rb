@@ -13,11 +13,11 @@ class BotController < ApplicationController
 
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, topic_bubble)
-        elsif text === "Website Design"
+        elsif text == "Website Design"
           FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
-        elsif text === "Basic"
+        elsif text == "Basic"
           FacebookBot.new.send_generic_message(sender, generic_template)
-        elsif text === "Website Hosting"
+        elsif text == "Website Hosting"
           res = "Here you go!"
           mes = {
             "attachment":{
@@ -89,17 +89,17 @@ class BotController < ApplicationController
                   {
                     "type":"postback",
                     "title":"Website Design",
-                    "payload":"defined_payload"
+                    "payload":"USER_DEFINED_PAYLOAD"
                   },
                   {
                     "type":"postback",
                     "title":"Website Hosting",
-                    "payload":"defined_payload"
+                    "payload":"USER_DEFINED_PAYLOAD"
                   },
                   {
                     "type":"postback",
                     "title":"Email & Domain Registration",
-                    "payload":"defined_payload"
+                    "payload":"USER_DEFINED_PAYLOAD"
                   }
                 ]
               }
