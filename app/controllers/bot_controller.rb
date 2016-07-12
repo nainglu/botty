@@ -23,6 +23,7 @@ class BotController < ApplicationController
       end
       unless params["entry"][0]["messaging"][0]["postback"].nil?
           payload = params["entry"][0]["messaging"][0]["postback"]["payload"]
+          FacebookBot.new.send_text_message(sender, payload)
           if payload == "Website Design"
             FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
           elsif payload == "Basic"
