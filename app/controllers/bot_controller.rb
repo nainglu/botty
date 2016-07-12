@@ -17,9 +17,8 @@ class BotController < ApplicationController
           res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
           FacebookBot.new.send_text_message(sender, res)
         end
-
-      else
-        unless params["entry"][0]["messaging"][0]["postback"].nil?
+      end
+      unless params["entry"][0]["messaging"][0]["postback"].nil?
           payload = params["entry"][0]["messaging"][0]["postback"]["payload"]
           if payload == "Website Design"
             FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
@@ -41,7 +40,6 @@ class BotController < ApplicationController
             FacebookBot.new.send_generic_message(sender, bubble_template)
           end
         end
-      end
     end
     render :nothing => true, :status => 200, :content_type => 'text/html'
   end
