@@ -12,9 +12,9 @@ class BotController < ApplicationController
         text = params["entry"][0]["messaging"][0]["message"]["text"]
 
         if greeting.include? text
-          FacebookBot.new.send_generic_message(sender, topic_bubble)
-        elsif text == "Website Design"
           FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+        elsif text == "Website Design"
+          FacebookBot.new.send_generic_message(sender, topic_bubble)
         elsif text == "Website Hosting"
           res = "Here you go!"
           mes = {
@@ -135,7 +135,7 @@ class BotController < ApplicationController
               "type":"template",
               "payload":{
                 "template_type":"button",
-                "text":"ဟုတ္ကဲ့ခင္ဗ်ာ။ က်ြန္ေတာ္တုိ႔ဆီမွာ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
+                "text":"ဟုတ္ကဲ့ခင္ဗ်ာ။ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
                 "buttons":[
                   {
                     "type":"postback",
