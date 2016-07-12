@@ -131,25 +131,31 @@ class BotController < ApplicationController
 
     def web_pack_quick_reply
       mes = {
-              "text":"ဟုတ္ကဲ့ခင္ဗ်ာ။ က်ြန္ေတာ္တုိ႔ဆီမွာ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
-              "quick_replies":[
-                {
-                  "content_type":"text",
-                  "title":"Basic",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                },
-                {
-                  "content_type":"text",
-                  "title":"Standard",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                },
-                {
-                  "content_type":"text",
-                  "title":"Premium",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                }
-              ]
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"button",
+                "text":"ဟုတ္ကဲ့ခင္ဗ်ာ။ က်ြန္ေတာ္တုိ႔ဆီမွာ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
+                "buttons":[
+                  {
+                    "type":"postback",
+                    "title":"Basic",
+                    "payload":"defined_payload"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Standard",
+                    "payload":"defined_payload"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Premium",
+                    "payload":"defined_payload"
+                  }
+                ]
+              }
             }
+          }
     end
 
     def choose_lang_quick
