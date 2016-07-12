@@ -9,17 +9,15 @@ class BotController < ApplicationController
     unless params["entry"].nil? || params["entry"].empty?
       
       sender = params["entry"][0]["messaging"][0]["sender"]["id"]
-      
+      text = "aaa"
       unless params["entry"][0]["messaging"][0]["message"].nil?
         text = params["entry"][0]["messaging"][0]["message"]["text"]
-      else 
-        unless params["entry"][0]["messaging"][0]["postback"].nil?
-          text = params["entry"][0]["messaging"][0]["postback"]["payload"]
-        else
-          text = params["entry"][0]["messaging"][0]["message"]["text"]
-        end
+      end
+      unless params["entry"][0]["messaging"][0]["postback"].nil?
+        text = params["entry"][0]["messaging"][0]["postback"]["payload"]
       end
 
+      unless text == "aaa"
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, topic_bubble)
         elsif text == "Website Design"
@@ -44,6 +42,7 @@ class BotController < ApplicationController
           res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
           FacebookBot.new.send_text_message(sender, res)
         end
+      end
     end
     render :nothing => true, :status => 200, :content_type => 'text/html'
   end
