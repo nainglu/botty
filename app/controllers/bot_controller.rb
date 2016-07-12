@@ -83,7 +83,7 @@ class BotController < ApplicationController
               "type":"template",
               "payload":{
                 "template_type":"button",
-                "text":"What do you want to do next?",
+                "text":"မဂၤလာပါခင္ဗ်ာ။ ယခုလုိဆက္သြယ္ျခင္းအတြက္ ေက်းဇူးတင္ရွိပါတယ္။ မည္သည့္အေၾကာင္းအရာအတြက္ သိရွိလုိပါသလဲ။",
                 "buttons":[
                   {
                     "type":"postback",
@@ -112,7 +112,7 @@ class BotController < ApplicationController
               "type":"template",
               "payload":{
                 "template_type":"button",
-                "text":"မဂၤလာပါခင္ဗ်ာ။ ယခုလုိဆက္သြယ္ျခင္းအတြက္ ေက်းဇူးတင္ရွိပါတယ္။ မည္သည့္အေၾကာင္းအရာအတြက္ သိရွိလုိပါသလဲ။",
+                "text":"What do you want to do next?",
                 "buttons":[
                   {
                     "type":"web_url",
