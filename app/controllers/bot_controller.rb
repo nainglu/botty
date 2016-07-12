@@ -21,7 +21,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
         end
       end
-      unless params["entry"][0]["messaging"][0]["postback"].nil?
+      if params["entry"][0]["messaging"][0]["postback"]
           payload = params["entry"][0]["messaging"][0]["postback"]["payload"]
           FacebookBot.new.send_text_message(sender, payload)
           if payload == "Website Design"
