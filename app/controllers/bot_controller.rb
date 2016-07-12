@@ -13,8 +13,6 @@ class BotController < ApplicationController
 
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, topic_bubble)
-        elsif text == "Website Design"
-          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
         elsif text == "Basic"
           FacebookBot.new.send_generic_message(sender, generic_template)
         elsif text == "Website Hosting"
@@ -89,7 +87,7 @@ class BotController < ApplicationController
                   {
                     "type":"postback",
                     "title":"Website Design",
-                    "payload":"USER_DEFINED_PAYLOAD"
+                    "payload":web_pack_quick_reply
                   },
                   {
                     "type":"postback",
@@ -158,6 +156,7 @@ class BotController < ApplicationController
               }
             }
           }
+      FacebookBot.new.send_generic_message(params["entry"][0]["messaging"][0]["sender"]["id"], mes)
     end
 end
 
