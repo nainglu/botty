@@ -13,6 +13,8 @@ class BotController < ApplicationController
 
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, topic_bubble)
+        elsif text == "Website Design"
+          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
         elsif text == "Basic"
           FacebookBot.new.send_generic_message(sender, generic_template)
         elsif text == "Website Hosting"
@@ -28,7 +30,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
         elsif text == "Email & Domain Registration"
-          FacebookBot.new.send_generic_message(sender, topic_bubble)
+          FacebookBot.new.send_generic_message(sender, bubble_template)
         else
           res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
           FacebookBot.new.send_text_message(sender, res)
@@ -87,7 +89,7 @@ class BotController < ApplicationController
                   {
                     "type":"postback",
                     "title":"Website Design",
-                    "payload":web_pack_quick_reply
+                    "payload":"USER_DEFINED_PAYLOAD"
                   },
                   {
                     "type":"postback",
@@ -156,7 +158,6 @@ class BotController < ApplicationController
               }
             }
           }
-      FacebookBot.new.send_generic_message(params["entry"][0]["messaging"][0]["sender"]["id"], mes)
     end
 end
 
