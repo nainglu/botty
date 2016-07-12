@@ -16,6 +16,7 @@ class BotController < ApplicationController
         elsif text == "Website Design"
           FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
         elsif text == "Basic"
+          FacebookBot.new.send_generic_message(sender, send_generic_message)
         elsif text == "Website Hosting"
           res = "Here you go!"
           mes = {
