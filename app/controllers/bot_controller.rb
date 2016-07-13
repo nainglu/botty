@@ -27,6 +27,8 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, choose_web_pack)
         elsif text == "ထပ္မံေရြးခ်ယ္မည္"
           FacebookBot.new.send_generic_message(sender, choose_again)
+        elsif text == "support_လုပ္ေဆာင္မည္။"
+          FacebookBot.new.send_generic_message(sender, choose_again_support)
         elsif text == "မေရြးခ်ယ္ေတာ့ပါ။"
           FacebookBot.new.send_generic_message(sender, generic)
         elsif text == "လုပ္ေဆာင္မည္။"
@@ -75,19 +77,49 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
           FacebookBot.new.send_generic_message(sender, choose_again_quick)
-        elsif text == "webhost"
-          res = "Website Hosting Plans"
+        elsif text == "support"
+          FacebookBot.new.send_generic_message(sender, choose_support)
+        elsif text == "support_gold"
+          res = "Gold Plan"
           mes = {
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+                "url":"http://webfactorymm.com/app/assets/images/support_gold.jpg"
               }
             }
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-          a = continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          a = continue_support.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          FacebookBot.new.send_generic_message(sender, a)
+        elsif text == "support_plat"
+          res = "Gold Plan"
+          mes = {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":"http://webfactorymm.com/app/assets/images/support_platinum.jpg"
+              }
+            }
+          }
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, mes)
+          a = continue_support.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          FacebookBot.new.send_generic_message(sender, a)
+        elsif text == "support_dia"
+          res = "Gold Plan"
+          mes = {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":"http://webfactorymm.com/app/assets/images/support_diamond.jpg"
+              }
+            }
+          }
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, mes)
+          a = continue_support.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, a)
         elsif text == "emailreg"
           res = "Email Registration"
@@ -95,12 +127,21 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+                "url":"http://webfactorymm.com/app/assets/images/email_google.jpg"
+              }
+            }
+          }
+          mesr = {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":"http://webfactorymm.com/app/assets/images/email_mesr.jpg"
               }
             }
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
+          FacebookBot.new.send_generic_message(sender, mesr)
           a = continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, a)
         else
@@ -133,8 +174,8 @@ class BotController < ApplicationController
                   },
                   {
                     "type":"postback",
-                    "title":"Website Hosting",
-                    "payload":"webhost"
+                    "title":"Support Services",
+                    "payload":"support"
                   },
                   {
                     "type":"postback",
@@ -169,6 +210,35 @@ class BotController < ApplicationController
                     "type":"postback",
                     "title":"Premium",
                     "payload":"Premium"
+                  }
+                ]
+              }
+            }
+          }
+    end
+
+    def choose_support
+      mes = {
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"button",
+                "text":"ဟုတ္ကဲ့ခင္ဗ်ာ။ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
+                "buttons":[
+                  {
+                    "type":"postback",
+                    "title":"Gold",
+                    "payload":"support_gold"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Platinum",
+                    "payload":"support_plat"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Diamond",
+                    "payload":"support_dia"
                   }
                 ]
               }
@@ -223,6 +293,35 @@ class BotController < ApplicationController
           }
     end
 
+    def choose_again_support
+      mes = {
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"button",
+                "text":"သိရွိလုိသည့္ အမ်ဴိးအစားကုိ ျပန္လည္ေရြးခ်ယ္ပါ။",
+                "buttons":[
+                  {
+                    "type":"postback",
+                    "title":"Gold",
+                    "payload":"support_gold"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Platinum",
+                    "payload":"support_plat"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Diamond",
+                    "payload":"support_dia"
+                  }
+                ]
+              }
+            }
+          }
+    end
+
     def generic
       mes = {
               "attachment":{
@@ -232,7 +331,7 @@ class BotController < ApplicationController
                   "elements":[
                     {
                       "title":"Web Factory",
-                      "image_url":"http://petersapparel.parseapp.com/img/item100-thumb.png",
+                      "image_url":"http://webfactorymm.com/app/assets/images/webfactory.jpg",
                       "subtitle":"ယခုလုိေမးျမန္းျခင္းအတြက္ ေက်းဇူးအထူးတင္ရွိပါသည္။",
                       "buttons":[
                         {
@@ -266,6 +365,24 @@ class BotController < ApplicationController
               "content_type":"text",
               "title":"မလုပ္ေဆာင္ေတာ့ပါ။",
               "payload":"မလုပ္ေဆာင္ေတာ့ပါ။"
+            }
+          ]
+        }
+    end
+
+    def continue_support
+      mes = {
+          "text":"လူႀကီးမင္း၏ ေမးျမန္းခ်က္ကုိနားမလည္ပါ။ ဆက္လက္လုပ္ေဆာင္လုိပါသလား။",
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"လုပ္ေဆာင္မည္။",
+              "payload":"support_လုပ္ေဆာင္မည္။"
+            },
+            {
+              "content_type":"text",
+              "title":"မလုပ္ေဆာင္ေတာ့ပါ။",
+              "payload":"support_မလုပ္ေဆာင္ေတာ့ပါ။"
             }
           ]
         }
