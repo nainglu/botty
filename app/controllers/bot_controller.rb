@@ -75,7 +75,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
           FacebookBot.new.send_generic_message(sender, choose_again_quick)
-        elsif text == "Website Hosting"
+        elsif text == "webhost"
           mes = {
             "attachment":{
               "type":"image",
@@ -88,11 +88,11 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, mes)
           choose_topic[:attachment][:payload].merge!(text: "သိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, continue)
-        elsif text == "Email & Domain"
+        elsif text == "emailreg"
           mes = {
             "attachment":{
               "type":"image",
-              "text": "Email & Domain Registration",
+              "text": "Email Registration",
               "payload":{
                 "url":"http://www.gstatic.com/webp/gallery/2.jpg"
               }
@@ -131,12 +131,12 @@ class BotController < ApplicationController
                   {
                     "type":"postback",
                     "title":"Website Hosting",
-                    "payload":"Website Hosting"
+                    "payload":"webhost"
                   },
                   {
                     "type":"postback",
-                    "title":"Email & Domain Registration",
-                    "payload":"Email & Domain"
+                    "title":"Email Registration",
+                    "payload":"emailreg"
                   }
                 ]
               }
