@@ -22,13 +22,49 @@ class BotController < ApplicationController
       
       unless text == "aaa"
         if greeting.include? text
-          FacebookBot.new.send_generic_message(sender, topic_bubble)
+          FacebookBot.new.send_generic_message(sender, choose_topic)
         elsif text == "Website Design"
-          FacebookBot.new.send_generic_message(sender, web_pack_quick_reply)
+          FacebookBot.new.send_generic_message(sender, choose_web_pack)
+        elsif text == "ထပ္မံေရြးခ်ယ္မည္"
+          FacebookBot.new.send_generic_message(sender, choose_again)
         elsif text == "Basic"
-          FacebookBot.new.send_generic_message(sender, generic_template)
+          res = "Basic Package"
+          mes = {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+              }
+            }
+          }
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, mes)
+        elsif text == "Standard"
+          res = "Standard Package"
+          mes = {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+              }
+            }
+          }
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, mes)
+        elsif text == "Premium"
+          res = "Premium Package"
+          mes = {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+              }
+            }
+          }
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, mes)
         elsif text == "Website Hosting"
-          res = "Here you go!"
+          res = "Hosting Plans"
           mes = {
             "attachment":{
               "type":"image",
@@ -40,10 +76,19 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
         elsif text == "Email & Domain Registration"
-          FacebookBot.new.send_generic_message(sender, bubble_template)
-        else
-          res = "Okay! we are out of sense. let's get back to conversation. please say hi!"
+          res = "Email & Domain Registration"
+          mes = {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+              }
+            }
+          }
           FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, mes)
+        else
+          FacebookBot.new.send_text_message(sender, continue)
         end
       end
     end
@@ -56,38 +101,7 @@ class BotController < ApplicationController
         "HELLO", "HI"]
     end
 
-
-    def generic_template
-      mes = {
-              "attachment":{
-                "type":"template",
-                "payload":{
-                  "template_type":"generic",
-                  "elements":[
-                    {
-                      "title":"Welcome to Peter\'s Hats",
-                      "image_url":"http://petersapparel.parseapp.com/img/item100-thumb.png",
-                      "subtitle":"We\'ve got the right hat for everyone.",
-                      "buttons":[
-                        {
-                          "type":"web_url",
-                          "url":"https://petersapparel.parseapp.com/view_item?item_id=100",
-                          "title":"View Website"
-                        },
-                        {
-                          "type":"postback",
-                          "title":"Start Chatting",
-                          "payload":"USER_DEFINED_PAYLOAD"
-                        }              
-                      ]
-                    }
-                  ]
-                }
-              }
-            }
-    end
-
-    def topic_bubble
+    def choose_topic
       mes = {
             "attachment":{
               "type":"template",
@@ -116,31 +130,7 @@ class BotController < ApplicationController
           }
     end
 
-    def topic_quick_reply
-      mes = {
-            "attachment":{
-              "type":"template",
-              "payload":{
-                "template_type":"button",
-                "text":"What do you want to do next?",
-                "buttons":[
-                  {
-                    "type":"web_url",
-                    "url":"https://petersapparel.parseapp.com",
-                    "title":"Show Website"
-                  },
-                  {
-                    "type":"postback",
-                    "title":"Start Chatting",
-                    "payload":"say hi"
-                  }
-                ]
-              }
-            }
-          }
-    end
-
-    def web_pack_quick_reply
+    def choose_web_pack
       mes = {
             "attachment":{
               "type":"template",
@@ -167,6 +157,83 @@ class BotController < ApplicationController
               }
             }
           }
+    end
+
+    def choose_again
+      mes = {
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"button",
+                "text":"သိရွိလုိသည့္ အမ်ဴိးအစားကုိ ျပန္လည္ေရြးခ်ယ္ပါ။",
+                "buttons":[
+                  {
+                    "type":"postback",
+                    "title":"Basic",
+                    "payload":"Basic"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Standard",
+                    "payload":"Standard"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Premium",
+                    "payload":"Premium"
+                  }
+                ]
+              }
+            }
+          }
+    end
+
+    def basic_pack
+      mes = {
+              "attachment":{
+                "type":"template",
+                "payload":{
+                  "template_type":"generic",
+                  "elements":[
+                    {
+                      "title":"Basic Package",
+                      "image_url":"http://petersapparel.parseapp.com/img/item100-thumb.png",
+                      "subtitle":"We\'ve got the right packages for everyone.",
+                      "buttons":[
+                        {
+                          "type":"web_url",
+                          "url":"http://www.revotech.co/work/",
+                          "title":"View Website"
+                        },
+                        {
+                          "type":"postback",
+                          "title":"ထပ္မံေရြးခ်ယ္မည္",
+                          "payload":"ထပ္မံေရြးခ်ယ္မည္"
+                        }              
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+    end
+
+    def continue
+      mes = {
+          "text":"လူႀကီးမင္း၏ ေမးျမန္းခ်က္ကုိနားမလည္ပါ။ ဆက္လက္လုပ္ေဆာင္လုိပါသလား။",
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"လုပ္ေဆာင္မည္။",
+              "payload":"မလုပ္ေဆာင္ေတာ့ပါ။"
+            },
+            {
+              "content_type":"text",
+              "title":"မလုပ္ေဆာင္ေတာ့ပါ။",
+              "payload":"မလုပ္ေဆာင္ေတာ့ပါ။"
+            }
+          ]
+        }
     end
 end
 
