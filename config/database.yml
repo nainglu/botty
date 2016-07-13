@@ -1,5 +1,5 @@
 development:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   database: boty_dev
   username: root
@@ -7,7 +7,7 @@ development:
   host: localhost
 
 test:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   database: boty_test
   username: root
@@ -15,7 +15,7 @@ test:
   host: localhost
 
 production:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   database: boty_prod
   username: root
