@@ -104,7 +104,6 @@ class BotController < ApplicationController
         else
           t = params["entry"][0]["messaging"][0]
           FacebookBot.new.send_text_message(sender, t)
-          FacebookBot.new.send_generic_message(sender, continue)
         end
       end
     end
