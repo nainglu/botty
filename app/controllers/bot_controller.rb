@@ -79,27 +79,26 @@ class BotController < ApplicationController
           mes = {
             "attachment":{
               "type":"image",
-              "text": "Hosting Plans",
+              "title": "Title",
               "payload":{
                 "url":"http://www.gstatic.com/webp/gallery/2.jpg"
               }
             }
           }
           FacebookBot.new.send_generic_message(sender, mes)
-          choose_topic[:attachment][:payload].merge!(text: "သိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, continue)
         elsif text == "emailreg"
           mes = {
             "attachment":{
               "type":"image",
-              "text": "Email Registration",
               "payload":{
                 "url":"http://www.gstatic.com/webp/gallery/2.jpg"
               }
             }
           }
           FacebookBot.new.send_generic_message(sender, mes)
-          choose_topic[:attachment][:payload].merge!(text: "သိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, continue)
         else
           t = params["entry"][0]["messaging"][0]
