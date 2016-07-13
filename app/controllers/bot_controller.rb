@@ -76,19 +76,21 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, mes)
           FacebookBot.new.send_generic_message(sender, choose_again_quick)
         elsif text == "webhost"
+          res = "Website Hosting Plans"
           mes = {
             "attachment":{
               "type":"image",
-              "title": "Title",
               "payload":{
                 "url":"http://www.gstatic.com/webp/gallery/2.jpg"
               }
             }
           }
+          FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-          continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
-          FacebookBot.new.send_generic_message(sender, continue)
+          a = continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          FacebookBot.new.send_generic_message(sender, a)
         elsif text == "emailreg"
+          res = "Email Registration"
           mes = {
             "attachment":{
               "type":"image",
@@ -97,9 +99,10 @@ class BotController < ApplicationController
               }
             }
           }
+          FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-          continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
-          FacebookBot.new.send_generic_message(sender, continue)
+          a = continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          FacebookBot.new.send_generic_message(sender, a)
         else
           t = params["entry"][0]["messaging"][0]
           FacebookBot.new.send_text_message(sender, t)
