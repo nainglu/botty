@@ -94,12 +94,12 @@ class BotController < ApplicationController
           a = continue_support.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, a)
         elsif text == "support_plat"
-          res = "Gold Plan"
+          res = "Platinum Plan"
           mes = {
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/support_platinum.jpg"
+                "url":"http://webfactorymm.com/app/assets/images/support_paltinum.jpg"
               }
             }
           }
@@ -108,7 +108,7 @@ class BotController < ApplicationController
           a = continue_support.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, a)
         elsif text == "support_dia"
-          res = "Gold Plan"
+          res = "Diamond Plan"
           mes = {
             "attachment":{
               "type":"image",
