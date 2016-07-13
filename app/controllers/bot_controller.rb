@@ -172,7 +172,7 @@ class BotController < ApplicationController
               "type":"template",
               "payload":{
                 "template_type":"button",
-                "text":"မဂၤလာပါခင္ဗ်ာ။ ယခုလုိဆက္သြယ္ျခင္းအတြက္ ေက်းဇူးတင္ရွိပါတယ္။ မည္သည့္အေၾကာင္းအရာအတြက္ သိရွိလုိပါသလဲ။",
+                "text":"မဂၤလာပါရွင္။ ယခုလုိဆက္သြယ္ျခင္းအတြက္ ေက်းဇူးတင္ရွိပါတယ္။ မည္သည့္အေၾကာင္းအရာအတြက္ သိရွိလုိပါသလဲ။",
                 "buttons":[
                   {
                     "type":"postback",
@@ -201,7 +201,7 @@ class BotController < ApplicationController
               "type":"template",
               "payload":{
                 "template_type":"button",
-                "text":"ဟုတ္ကဲ့ခင္ဗ်ာ။ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
+                "text":"ဟုတ္ကဲ႔ပါရွင္။ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
                 "buttons":[
                   {
                     "type":"postback",
@@ -230,7 +230,7 @@ class BotController < ApplicationController
               "type":"template",
               "payload":{
                 "template_type":"button",
-                "text":"ဟုတ္ကဲ့ခင္ဗ်ာ။ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
+                "text":"ဟုတ္ကဲ႔ပါရွင္။ အမ်ိဴးအစား (၃) မ်ဴိးရွိပါတယ္။ မည္သည့္ အမ်ိဴးအစားကုိ ေရြးခ်ယ္လုိပါသလဲခင္ဗ်ာ။",
                 "buttons":[
                   {
                     "type":"postback",
@@ -379,7 +379,7 @@ class BotController < ApplicationController
 
     def continue
       mes = {
-          "text":"လူႀကီးမင္း၏ ေမးျမန္းခ်က္ကုိနားမလည္ပါ။ ဆက္လက္လုပ္ေဆာင္လုိပါသလား။",
+          "text":"လူႀကီးမင္း၏ ေမးျမန္းခ်က္ကုိနားမလည္ပါရွင္။ ဆက္လက္လုပ္ေဆာင္လုိပါသလား။",
           "quick_replies":[
             {
               "content_type":"text",
@@ -397,7 +397,7 @@ class BotController < ApplicationController
 
     def continue_support
       mes = {
-          "text":"လူႀကီးမင္း၏ ေမးျမန္းခ်က္ကုိနားမလည္ပါ။ ဆက္လက္လုပ္ေဆာင္လုိပါသလား။",
+          "text":"လူႀကီးမင္း၏ ေမးျမန္းခ်က္ကုိနားမလည္ပါရွင္။ ဆက္လက္လုပ္ေဆာင္လုိပါသလား။",
           "quick_replies":[
             {
               "content_type":"text",
