@@ -35,7 +35,7 @@ class BotController < ApplicationController
         elsif text == "မလုပ္ေဆာင္ေတာ့ပါ။"
           FacebookBot.new.send_generic_message(sender, generic)
         elsif text == "call"
-          FacebookBot.new.send_text_message(sender, "09 2649 83474")
+          FacebookBot.new.send_text_message(sender, "Please Dial '09 2649 83474'")
         elsif text == "Basic"
           res = "Basic Package"
           mes = {
@@ -76,30 +76,30 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, mes)
           FacebookBot.new.send_generic_message(sender, choose_again_quick)
         elsif text == "Website Hosting"
-          res = "Hosting Plans"
           mes = {
             "attachment":{
               "type":"image",
+              "text": "Hosting Plans",
               "payload":{
                 "url":"http://www.gstatic.com/webp/gallery/2.jpg"
               }
             }
           }
-          FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
+          choose_topic[:attachment][:payload].merge!(text: "သိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, continue)
         elsif text == "Email & Domain Registration"
-          res = "Email & Domain Registration"
           mes = {
             "attachment":{
               "type":"image",
+              "text": "Email & Domain Registration",
               "payload":{
                 "url":"http://www.gstatic.com/webp/gallery/2.jpg"
               }
             }
           }
-          FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
+          choose_topic[:attachment][:payload].merge!(text: "သိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, continue)
         else
           FacebookBot.new.send_generic_message(sender, continue)
