@@ -29,6 +29,13 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, choose_again)
         elsif text == "မေရြးခ်ယ္ေတာ့ပါ။"
           FacebookBot.new.send_generic_message(sender, generic)
+        elsif text == "လုပ္ေဆာင္မည္။"
+          choose_topic[:attachment][:payload].merge!(text: "သိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          FacebookBot.new.send_generic_message(sender, choose_topic)
+        elsif text == "မလုပ္ေဆာင္ေတာ့ပါ။"
+          FacebookBot.new.send_generic_message(sender, generic)
+        elsif text == "call"
+          FacebookBot.new.send_text_message(sender, "09 2649 83474")
         elsif text == "Basic"
           res = "Basic Package"
           mes = {
@@ -80,6 +87,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
+          FacebookBot.new.send_generic_message(sender, continue)
         elsif text == "Email & Domain Registration"
           res = "Email & Domain Registration"
           mes = {
@@ -92,6 +100,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
+          FacebookBot.new.send_generic_message(sender, continue)
         else
           FacebookBot.new.send_generic_message(sender, continue)
         end
@@ -221,8 +230,13 @@ class BotController < ApplicationController
                     {
                       "title":"Web Factory",
                       "image_url":"http://petersapparel.parseapp.com/img/item100-thumb.png",
-                      "subtitle":"We create creative websites for everyone.",
+                      "subtitle":"ယခုလုိေမးျမန္းျခင္းအတြက္ ေက်းဇူးအထူးတင္ရွိပါသည္။",
                       "buttons":[
+                        {
+                          "type":"postback",
+                          "title":"Call Now!",
+                          "payload":"call"
+                        },
                         {
                           "type":"postback",
                           "title":"Say Hi! Again",
@@ -243,7 +257,7 @@ class BotController < ApplicationController
             {
               "content_type":"text",
               "title":"လုပ္ေဆာင္မည္။",
-              "payload":"မလုပ္ေဆာင္ေတာ့ပါ။"
+              "payload":"လုပ္ေဆာင္မည္။"
             },
             {
               "content_type":"text",
