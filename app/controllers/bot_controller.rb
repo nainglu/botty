@@ -55,7 +55,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+                "url":"http://webfactorymm.com/app/assets/images/web_pack_standard.jpg"
               }
             }
           }
@@ -68,7 +68,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://www.gstatic.com/webp/gallery/2.jpg"
+                "url":"http://webfactorymm.com/app/assets/images/web_pack_premium.jpg"
               }
             }
           }
