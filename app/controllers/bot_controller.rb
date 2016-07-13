@@ -163,7 +163,7 @@ class BotController < ApplicationController
   private
     def greeting
       ["မဂၤလာပါ", "ဟုိင္း", "Hi", "hi", "Hello", "hello", 
-        "HELLO", "HI"]
+        "HELLO", "HI", "Hey", "hey", "HEY"]
     end
 
     def choose_topic
