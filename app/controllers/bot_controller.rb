@@ -123,7 +123,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, a)
         elsif text == "emailreg"
           FacebookBot.new.send_generic_message(sender, choose_email_quick)
-        elsif text == "google"
+        elsif text == "Google"
           res = "Google Mail"
           mes = {
             "attachment":{
@@ -137,7 +137,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, mes)
           a = continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, a)
-        elsif text == "rack"
+        elsif text == "Rackspace"
           res = "Rackspace Mail"
           mes = {
             "attachment":{
@@ -273,7 +273,7 @@ class BotController < ApplicationController
 
     def choose_email_quick
       mes = {
-          "text":"ဝန္ေဆာင္မႈေပးသည့္ ကုပၼဏီေရြးခ်ယ္ပါ။",
+          "text":"ဝန္ေဆာင္မႈေပးသည့္ ကုမၸဏီေရြးခ်ယ္ပါ။",
           "quick_replies":[
             {
               "content_type":"text",
