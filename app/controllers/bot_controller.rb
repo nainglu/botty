@@ -102,6 +102,7 @@ class BotController < ApplicationController
           choose_topic[:attachment][:payload].merge!(text: "သိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, continue)
         else
+          FacebookBot.new.send_text_message(sender, text)
           FacebookBot.new.send_generic_message(sender, continue)
         end
       end
