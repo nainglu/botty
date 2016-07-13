@@ -27,6 +27,8 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, choose_web_pack)
         elsif text == "ထပ္မံေရြးခ်ယ္မည္"
           FacebookBot.new.send_generic_message(sender, choose_again)
+        elsif text == "မေရြးခ်ယ္ေတာ့ပါ။"
+          FacebookBot.new.send_generic_message(sender, generic)
         elsif text == "Basic"
           res = "Basic Package"
           mes = {
@@ -39,6 +41,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
+          FacebookBot.new.send_generic_message(sender, choose_again_quick)
         elsif text == "Standard"
           res = "Standard Package"
           mes = {
@@ -51,6 +54,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
+          FacebookBot.new.send_generic_message(sender, choose_again_quick)
         elsif text == "Premium"
           res = "Premium Package"
           mes = {
@@ -63,6 +67,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
+          FacebookBot.new.send_generic_message(sender, choose_again_quick)
         elsif text == "Website Hosting"
           res = "Hosting Plans"
           mes = {
@@ -88,7 +93,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
         else
-          FacebookBot.new.send_text_message(sender, continue)
+          FacebookBot.new.send_generic_message(sender, continue)
         end
       end
     end
@@ -159,6 +164,24 @@ class BotController < ApplicationController
           }
     end
 
+    def choose_again_quick
+      mes = {
+          "text":"အမ်ိဴးအစား ျပန္လည္ေရြးခ်ယ္လုိပါသလား။",
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"ထပ္မံေရြးခ်ယ္မည္",
+              "payload":"ထပ္မံေရြးခ်ယ္မည္"
+            },
+            {
+              "content_type":"text",
+              "title":"မေရြးခ်ယ္ေတာ့ပါ။",
+              "payload":"မေရြးခ်ယ္ေတာ့ပါ။"
+            }
+          ]
+        }
+    end
+
     def choose_again
       mes = {
             "attachment":{
@@ -188,7 +211,7 @@ class BotController < ApplicationController
           }
     end
 
-    def basic_pack
+    def generic
       mes = {
               "attachment":{
                 "type":"template",
@@ -196,19 +219,14 @@ class BotController < ApplicationController
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title":"Basic Package",
+                      "title":"Web Factory",
                       "image_url":"http://petersapparel.parseapp.com/img/item100-thumb.png",
-                      "subtitle":"We\'ve got the right packages for everyone.",
+                      "subtitle":"We create creative websites for everyone.",
                       "buttons":[
                         {
-                          "type":"web_url",
-                          "url":"http://www.revotech.co/work/",
-                          "title":"View Website"
-                        },
-                        {
                           "type":"postback",
-                          "title":"ထပ္မံေရြးခ်ယ္မည္",
-                          "payload":"ထပ္မံေရြးခ်ယ္မည္"
+                          "title":"Say Hi! Again",
+                          "payload":"hi"
                         }              
                       ]
                     }
