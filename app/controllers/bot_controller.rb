@@ -27,7 +27,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, choose_web_pack)
         elsif text == "ထပ္မံေရြးခ်ယ္မည္"
           FacebookBot.new.send_generic_message(sender, choose_again)
-        elsif text == "support_လုပ္ေဆာင္မည္။"
+        elsif text == "support_do"
           FacebookBot.new.send_generic_message(sender, choose_again_support)
         elsif text == "မေရြးခ်ယ္ေတာ့ပါ။"
           FacebookBot.new.send_generic_message(sender, generic)
@@ -122,7 +122,9 @@ class BotController < ApplicationController
           a = continue_support.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, a)
         elsif text == "emailreg"
-          res = "Email Registration"
+          FacebookBot.new.send_generic_message(sender, choose_email_quick)
+        elsif text == "google"
+          res = "Google Mail"
           mes = {
             "attachment":{
               "type":"image",
@@ -131,17 +133,22 @@ class BotController < ApplicationController
               }
             }
           }
-          mesr = {
+          FacebookBot.new.send_text_message(sender, res)
+          FacebookBot.new.send_generic_message(sender, mes)
+          a = continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          FacebookBot.new.send_generic_message(sender, a)
+        elsif text == "rack"
+          res = "Rackspace Mail"
+          mes = {
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/email_mesr.jpg"
+                "url":"http://webfactorymm.com/app/assets/images/email_rack.jpg"
               }
             }
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-          FacebookBot.new.send_generic_message(sender, mesr)
           a = continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, a)
         else
@@ -264,6 +271,24 @@ class BotController < ApplicationController
         }
     end
 
+    def choose_email_quick
+      mes = {
+          "text":"ဝန္ေဆာင္မႈေပးသည့္ ကုပၼဏီေရြးခ်ယ္ပါ။",
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"Google",
+              "payload":"google"
+            },
+            {
+              "content_type":"text",
+              "title":"Rackspace",
+              "payload":"rack"
+            }
+          ]
+        }
+    end
+
     def choose_again
       mes = {
             "attachment":{
@@ -377,12 +402,12 @@ class BotController < ApplicationController
             {
               "content_type":"text",
               "title":"လုပ္ေဆာင္မည္။",
-              "payload":"support_လုပ္ေဆာင္မည္။"
+              "payload":"support_do"
             },
             {
               "content_type":"text",
               "title":"မလုပ္ေဆာင္ေတာ့ပါ။",
-              "payload":"support_မလုပ္ေဆာင္ေတာ့ပါ။"
+              "payload":"မလုပ္ေဆာင္ေတာ့ပါ။"
             }
           ]
         }
