@@ -336,12 +336,12 @@ class BotController < ApplicationController
                       "buttons":[
                         {
                           "type":"postback",
-                          "title":"Call Now!",
+                          "title":"ဖုန္းေခၚဆုိမည္",
                           "payload":"call"
                         },
                         {
                           "type":"postback",
-                          "title":"Say Hi! Again",
+                          "title":"ထပ္မံေမးျမန္းမည္",
                           "payload":"hi"
                         }              
                       ]
