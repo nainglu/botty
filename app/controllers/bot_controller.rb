@@ -88,7 +88,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, mes)
           choose_topic[:attachment][:payload].merge!(text: "သိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
           FacebookBot.new.send_generic_message(sender, continue)
-        elsif text == "Email & Domain Registration"
+        elsif text == "Email & Domain"
           mes = {
             "attachment":{
               "type":"image",
@@ -136,7 +136,7 @@ class BotController < ApplicationController
                   {
                     "type":"postback",
                     "title":"Email & Domain Registration",
-                    "payload":"Email & Domain Registration"
+                    "payload":"Email & Domain"
                   }
                 ]
               }
