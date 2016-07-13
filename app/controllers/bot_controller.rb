@@ -28,7 +28,8 @@ class BotController < ApplicationController
         elsif text == "ထပ္မံေရြးခ်ယ္မည္"
           FacebookBot.new.send_generic_message(sender, choose_again)
         elsif text == "support_လုပ္ေဆာင္မည္။"
-          FacebookBot.new.send_generic_message(sender, choose_again_support)
+          choose_support[:attachment][:payload].merge!(text: "သိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
+          FacebookBot.new.send_generic_message(sender, choose_topic_support)
         elsif text == "မေရြးခ်ယ္ေတာ့ပါ။"
           FacebookBot.new.send_generic_message(sender, generic)
         elsif text == "လုပ္ေဆာင္မည္။"
