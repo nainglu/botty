@@ -1,7 +1,7 @@
 class FacebookBot
 
   def send_message(data)
-    url = URI.parse("https://graph.facebook.com/v2.6/me/messages?access_token=EAAYfjpzeZAE8BADKmFCZCWv2QTZCZBOFVqe2N7noH0hI0fnLIomf02ZBqPnOj6OgkSHVHUBZA0HQ4ZAcBXYVArF6ZAiBDfFTce34JOf95GzRecza10gzFfbuETmdK3QpzHXQPr6PyHl2ZAPZCJNrdmzTQgKTkobwPF8ZAF5oMnUd005wgZDZD")
+    url = URI.parse("https://graph.facebook.com/v2.6/me/messages?access_token=EAAYfjpzeZAE8BAOSWIZAkcmFOrv7DV5UT6nlJZBNdFK52ZBoyhX3sMCz7ajHfxrGuod7SB0R8YNpZABcQWedNsW7VzkPvVOYL9Ngc1ZCgtKzrQQkKDuwsTUJbZAGIvsYiu69E5Eg5qCZCIAmOGj5qkfb7sZBsrYlQU2SgVk5MbLGVAgZDZD")
 
     http = Net::HTTP.new(url.host, 443)
     http.use_ssl = true
