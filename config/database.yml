@@ -3,20 +3,23 @@ development:
   encoding: utf8
   database: boty_dev
   username: root
-  password: 
+  password: root
   host: localhost
+  port: 5432
 
 test:
   adapter: postgresql
   encoding: utf8
   database: boty_test
   username: root
-  password: 
+  password: root
   host: localhost
+  port: 5432
 
 production:
   adapter: postgresql
   encoding: utf8
   database: boty_prod
   username: root
-  password: 
+  password: root
+  port: 5432
