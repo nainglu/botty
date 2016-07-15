@@ -1,25 +1,22 @@
 development:
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
   database: boty_dev
   username: root
   password: root
   host: localhost
-  port: 5432
 
 test:
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
   database: boty_test
   username: root
   password: root
   host: localhost
-  port: 5432
 
 production:
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
   database: boty_prod
   username: root
   password: root
-  port: 5432
