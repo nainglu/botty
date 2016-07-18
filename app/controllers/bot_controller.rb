@@ -89,8 +89,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-          a = continue_support.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
-          FacebookBot.new.send_generic_message(sender, a)
+          FacebookBot.new.send_generic_message(sender, back_support)
         elsif text == "support_plat"
           res = "Platinum Plan"
           mes = {
@@ -103,8 +102,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-          a = continue_support.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
-          FacebookBot.new.send_generic_message(sender, a)
+          FacebookBot.new.send_generic_message(sender, back_support)
         elsif text == "support_dia"
           res = "Diamond Plan"
           mes = {
@@ -117,8 +115,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-          a = continue_support.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
-          FacebookBot.new.send_generic_message(sender, a)
+          FacebookBot.new.send_generic_message(sender, back_support)
         elsif text == "emailreg"
           FacebookBot.new.send_generic_message(sender, choose_email_quick)
         elsif text == "Google"
@@ -192,6 +189,23 @@ class BotController < ApplicationController
               }
             }
           }
+    end
+
+    def back_support
+      mes = {
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"ျပန္လည္ေရြးခ်ယ္မည္။",
+              "payload":"back"
+            },
+            {
+              "content_type":"text",
+              "title":"အစသုိ႔ျပန္သြားမည္။",
+              "payload":"origin"
+            }
+          ]
+        }
     end
 
     def choose_web_pack
