@@ -6,6 +6,7 @@ class BotController < ApplicationController
     if params["hub.verify_token"] == "my_voice_is_my_voice_verify_me"
       render json: params["hub.challenge"]
     end
+    FacebookBot.new.call_to_action(welcome_msg)
     unless params["entry"].nil? || params["entry"].empty?
       
       sender = params["entry"][0]["messaging"][0]["sender"]["id"]
@@ -19,8 +20,6 @@ class BotController < ApplicationController
           text = "aaa"
         end
       end
-
-      FacebookBot.new.call_to_action(welcome_msg)
       unless text == "aaa"
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, choose_topic)
