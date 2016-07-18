@@ -193,6 +193,7 @@ class BotController < ApplicationController
 
     def back_support
       mes = {
+          "text": "",
           "quick_replies":[
             {
               "content_type":"text",
