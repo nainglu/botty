@@ -180,7 +180,7 @@ class BotController < ApplicationController
                   },
                   {
                     "type":"postback",
-                    "title":"Support Services",
+                    "title":"Domain & Hosting Services",
                     "payload":"support"
                   },
                   {
