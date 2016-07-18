@@ -19,7 +19,7 @@ class BotController < ApplicationController
           text = "aaa"
         end
       end
-      FacebookBot.new.send_generic_message(sender, choose_topic)
+
       unless text == "aaa"
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, choose_topic)
