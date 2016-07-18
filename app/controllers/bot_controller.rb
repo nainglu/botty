@@ -381,14 +381,7 @@ class BotController < ApplicationController
 
     def welcome_msg
       mes = {
-        "text": "Welcome! Say Hi",
-        "buttons":[
-          {
-            "type":"Hi",
-            "title":"Hi",
-            "payload":"hi"
-          }
-        ]
+        "text": "Welcome! Say Hi"
       }
     end
 
