@@ -5,12 +5,11 @@ class BotController < ApplicationController
   def webhook
     if params["hub.verify_token"] == "my_voice_is_my_voice_verify_me"
       render json: params["hub.challenge"]
-      FacebookBot.new.call_to_action(welcome_msg)
     end
     unless params["entry"].nil? || params["entry"].empty?
       
       sender = params["entry"][0]["messaging"][0]["sender"]["id"]
-      
+      FacebookBot.new.call_to_action(sender, welcome_msg)
       unless params["entry"][0]["messaging"][0]["message"].nil?
         text = params["entry"][0]["messaging"][0]["message"]["text"]
       else
