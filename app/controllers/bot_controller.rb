@@ -202,8 +202,8 @@ class BotController < ApplicationController
             },
             {
               "content_type":"text",
-              "title":"အစသုိ႔ျပန္သြားမည္။",
-              "payload":"အစသုိ႔ျပန္သြားမည္။"
+              "title":"မလုပ္ေဆာင္ေတာ့ပါ။",
+              "payload":"မလုပ္ေဆာင္ေတာ့ပါ။"
             }
           ]
         }
