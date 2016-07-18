@@ -23,7 +23,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_generic_message(sender, choose_topic)
         elsif text == "Website Design"
           FacebookBot.new.send_generic_message(sender, choose_web_pack)
-        elsif text == "ထပ္မံေရြးခ်ယ္မည္"
+        elsif text == "ျပန္လည္ေရြးခ်ယ္မည္"
           FacebookBot.new.send_generic_message(sender, choose_again)
         elsif text == "ျပန္လည္ေရြးခ်ယ္မည္။"
           FacebookBot.new.send_generic_message(sender, choose_again_support)
@@ -273,8 +273,8 @@ class BotController < ApplicationController
           "quick_replies":[
             {
               "content_type":"text",
-              "title":"ထပ္မံေရြးခ်ယ္မည္",
-              "payload":"ထပ္မံေရြးခ်ယ္မည္"
+              "title":"ျပန္လည္ေရြးခ်ယ္မည္",
+              "payload":"ျပန္လည္ေရြးခ်ယ္မည္"
             },
             {
               "content_type":"text",
