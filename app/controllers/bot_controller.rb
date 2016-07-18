@@ -116,7 +116,7 @@ class BotController < ApplicationController
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
           FacebookBot.new.send_generic_message(sender, back_support)
-        elsif text == "emailreg"
+        elsif text == "emailreg" || text == "ျပန္လည္ေရြးခ်ယ္မည္၊"
           FacebookBot.new.send_generic_message(sender, choose_email_quick)
         elsif text == "Google"
           res = "Google Mail"
@@ -130,8 +130,7 @@ class BotController < ApplicationController
           }
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-          a = continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
-          FacebookBot.new.send_generic_message(sender, a)
+          FacebookBot.new.send_generic_message(sender, back_email)
         elsif text == "Rackspace"
           res = "Rackspace Mail"
           mes = {
@@ -145,8 +144,7 @@ class BotController < ApplicationController
           
           FacebookBot.new.send_text_message(sender, res)
           FacebookBot.new.send_generic_message(sender, mes)
-          a = continue.merge!(text: "ထပ္မံသိရွိလုိသည့္ အေၾကာင္းအရာကုိ ျပန္လည္ေရြးခ်ယ္ပါ။")
-          FacebookBot.new.send_generic_message(sender, a)
+          FacebookBot.new.send_generic_message(sender, back_email)
         else
           t = params["entry"][0]["messaging"][0]
           FacebookBot.new.send_text_message(sender, t)
@@ -415,14 +413,14 @@ class BotController < ApplicationController
         }
     end
 
-    def continue_support
+    def back_email
       mes = {
-          "text":"လူႀကီးမင္း၏ ေမးျမန္းခ်က္ကုိနားမလည္ပါရွင္။ ဆက္လက္လုပ္ေဆာင္လုိပါသလား။",
+          "text": "ဆက္လက္လုပ္ေဆာင္ရန္",
           "quick_replies":[
             {
               "content_type":"text",
-              "title":"လုပ္ေဆာင္မည္။",
-              "payload":"support_do"
+              "title":"ျပန္လည္ေရြးခ်ယ္မည္၊",
+              "payload":"ျပန္လည္ေရြးခ်ယ္မည္၊"
             },
             {
               "content_type":"text",
