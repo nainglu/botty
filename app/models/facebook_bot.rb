@@ -34,5 +34,18 @@ class FacebookBot
     send_message(data)
   end
 
+  def call_to_action(mes)
+    data = {
+      "setting_type":"call_to_actions",
+      "thread_state":"new_thread",
+      "call_to_actions":[
+        {
+          "message": mes
+        }
+      ]
+    }
+    send_message(data)
+  end
+
   
 end

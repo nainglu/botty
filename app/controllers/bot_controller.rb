@@ -20,6 +20,7 @@ class BotController < ApplicationController
         end
       end
 
+      FacebookBot.new.call_to_action(welcome_msg)
       unless text == "aaa"
         if greeting.include? text
           FacebookBot.new.send_generic_message(sender, choose_topic)
@@ -376,6 +377,19 @@ class BotController < ApplicationController
                 }
               }
             }
+    end
+
+    def welcome_msg
+      mes = {
+        "text": "Welcome! Say Hi",
+        "buttons":[
+          {
+            "type":"Hi",
+            "title":"Hi",
+            "payload":"hi"
+          }
+        ]
+      }
     end
 
     def continue
