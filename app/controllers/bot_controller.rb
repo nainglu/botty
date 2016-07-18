@@ -42,7 +42,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/web_pack_basic.jpg"
+                "url":"https://webfactorymm.com/bots/web_pack_basic.jpg"
               }
             }
           }
@@ -55,7 +55,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/web_pack_standard.jpg"
+                "url":"https://webfactorymm.com/bots/web_pack_standard.jpg"
               }
             }
           }
@@ -68,7 +68,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/web_pack_premium.jpg"
+                "url":"https://webfactorymm.com/bots/web_pack_premium.jpg"
               }
             }
           }
@@ -83,7 +83,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/support_gold.jpg"
+                "url":"https://webfactorymm.com/bots/support_gold.jpg"
               }
             }
           }
@@ -97,7 +97,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/support_paltinum.jpg"
+                "url":"https://webfactorymm.com/bots/support_paltinum.jpg"
               }
             }
           }
@@ -111,7 +111,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/support_diamond.jpg"
+                "url":"https://webfactorymm.com/bots/support_diamond.jpg"
               }
             }
           }
@@ -127,7 +127,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/email_google.jpg"
+                "url":"https://webfactorymm.com/bots/email_google.jpg"
               }
             }
           }
@@ -141,7 +141,7 @@ class BotController < ApplicationController
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"http://webfactorymm.com/app/assets/images/email_rack.jpg"
+                "url":"https://webfactorymm.com/bots/email_rack.jpg"
               }
             }
           }
@@ -355,7 +355,7 @@ class BotController < ApplicationController
                   "elements":[
                     {
                       "title":"Web Factory",
-                      "image_url":"http://webfactorymm.com/app/assets/images/webfactory.jpg",
+                      "image_url":"https://webfactorymm.com/bots/webfactory.jpg",
                       "subtitle":"ယခုလုိေမးျမန္းျခင္းအတြက္ ေက်းဇူးအထူးတင္ရွိပါသည္။",
                       "buttons":[
                         {
